@@ -7,9 +7,9 @@ screenshot:
 
 
 
-## 📘 README.md (GitHub-ready)
+## 📘 README.md 
 
-Here is a **detailed README** you can include in your GitHub repository:
+
 
 ```markdown
 # 🤖 AI Chatbot using Django, scikit-learn & NLTK
@@ -213,4 +213,4 @@ def get_movie_info(title="Inception"):
 
 ---
 
-Let me know when you’re ready for the final `.zip` package or want help coding the weather/movie integration!
+
