@@ -3,40 +3,33 @@ screenshot:
 ![chat bot screenshot](https://github.com/user-attachments/assets/86a42a88-b4cc-4b28-8f3c-10d6abb73780)
 
 
+# ✅ Fullstack Todo App using Node.js, Express & MySQL
 
-
-
-
-## 📘 README.md 
-
-
-
-```markdown
-# 🤖 AI Chatbot using Django, scikit-learn & NLTK
-
-This is an intelligent chatbot system built using Django (Python Web Framework), trained with `scikit-learn`, and enhanced using NLTK for natural language processing. It allows users to interact through a web-based chat interface and receive intelligent responses based on predefined intents.
+This is a **Fullstack Todo Application** that allows users to manage their daily tasks efficiently with features like authentication, task creation, updates, and completion tracking.  
+It is powered by a **Node.js + Express** backend, a **MySQL** database, and a clean **HTML/CSS/JS** frontend.
 
 ---
 
 ## 🚀 Features
 
-- Train your own intent classification model with `scikit-learn`
-- Use NLTK for tokenization and stemming
-- Django backend to handle chat communication
-- Dynamic web interface (HTML/JS)
-- Persistent model files for fast loading
+- 🔐 **User Authentication** (Register/Login with JWT)
+- 🧾 **Add, Edit, Delete Tasks**
+- ✅ **Mark Tasks as Completed**
+- 💾 **Persistent Database Storage (MySQL)**
+- 🌐 **RESTful API Endpoints for Task Management**
+- 💻 **Simple, Responsive Frontend UI**
 
 ---
 
 ## 🧠 Tech Stack
 
-| Layer        | Technology |
-|--------------|------------|
-| Frontend     | HTML, JavaScript |
-| Backend      | Django (Python) |
-| ML Model     | scikit-learn (Logistic Regression / SVM) |
-| NLP          | NLTK (tokenize, stem) |
-| Storage      | `pickle` for model, vectorizer, label encoder |
+| Layer           | Technology               |
+|-----------------|--------------------------|
+| Frontend        | HTML, CSS, JavaScript     |
+| Backend         | Node.js, Express.js       |
+| Database        | MySQL                    |
+| Authentication  | JWT (JSON Web Token)      |
+| Environment     | dotenv                    |
 
 ---
 
@@ -44,18 +37,23 @@ This is an intelligent chatbot system built using Django (Python Web Framework),
 
 ```
 
-AI-Chatbot/
-├── templates/              # HTML templates for chatbot UI
-├── app.py / manage.py      # Entry point (Flask or Django)
-├── train.py                # Model training script
-├── model.py                # Model architecture (optional)
-├── chat.py                 # Model inference logic
-├── intents.json            # Intent classification data
-├── chatbot\_model.pkl       # Trained ML model
-├── vectorizer.pkl          # Text vectorizer
-├── label\_encoder.pkl       # Label encoder for tags
-├── nltk\_utils.py           # NLP preprocessing (tokenize, stem)
-├── venv/                   # Python virtual environment (optional)
+todo-app/
+├── server/                  # Backend code (APIs)
+│   ├── routes/              # API route definitions
+│   ├── controllers/         # Business logic for routes
+│   ├── models/              # Database models (MySQL tables)
+│   ├── middleware/          # JWT auth middleware
+│   ├── config/              # DB connection setup
+│   ├── server.js            # Entry point
+│
+├── public/ or client/       # Frontend files
+│   ├── index.html           # UI for Todo app
+│   ├── style.css            # Styling
+│   └── script.js            # API integration
+│
+├── .env                     # Environment variables
+├── package.json             # Node.js dependencies
+└── README.md
 
 ````
 
@@ -63,154 +61,124 @@ AI-Chatbot/
 
 ## ⚙️ Installation & Setup
 
-### 1. Clone the repo:
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/AI-Chatbot.git
-cd AI-Chatbot
+git clone https://github.com/yourusername/Todo-App.git
+cd Todo-App
 ````
 
-### 2. Create & activate virtual environment:
+### 2. Install Dependencies
 
 ```bash
-python -m venv venv
-source venv/bin/activate      # macOS/Linux
-venv\Scripts\activate         # Windows
+cd server
+npm install
 ```
 
-### 3. Install requirements:
+### 3. Configure Environment Variables
+
+Create a `.env` file inside the `server/` folder:
 
 ```bash
-pip install -r requirements.txt
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=todo_app
+JWT_SECRET=your_jwt_secret
 ```
 
-(If `requirements.txt` doesn’t exist, manually install these:)
+### 4. Setup MySQL Database
+
+Run the following SQL command to create the database:
+
+```sql
+CREATE DATABASE todo_app;
+```
+
+The application will automatically create tables when started (if configured with Sequelize/Knex) or you can define your own schema.
+
+### 5. Run the Backend Server
 
 ```bash
-pip install django scikit-learn nltk
+npm start
 ```
 
-### 4. Download NLTK data (if needed):
+Server runs at 👉 [http://localhost:5000](http://localhost:5000)
 
-```bash
-python download_nltk_data.py
-```
+### 6. Run the Frontend
 
-### 5. Train the model (optional):
-
-```bash
-python train.py
-```
-
-### 6. Run the server:
-
-```bash
-python manage.py runserver
-```
-
-Open your browser at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+Open `public/index.html` in your browser or host it on a simple server.
 
 ---
 
-## 🧪 Testing the Chatbot
+## 📡 API Endpoints
 
-1. Open the home page
-2. Enter inputs like:
-
-   * "Hi"
-   * "What can you do?"
-   * "Tell me about Arjun"
-   * "What is your name?"
-3. Get a response based on intent classification.
-
----
-
-## 🛠 Customization
-
-* Update `intents.json` to modify questions/responses
-* Re-train the model via `train.py`
-* Modify views in Django to add new pages
+| Method | Endpoint             | Description             | Auth Required |
+| ------ | -------------------- | ----------------------- | ------------- |
+| POST   | `/api/auth/register` | Register a new user     | ❌             |
+| POST   | `/api/auth/login`    | Login and get JWT token | ❌             |
+| GET    | `/api/tasks`         | Get all tasks           | ✅             |
+| POST   | `/api/tasks`         | Create a new task       | ✅             |
+| PUT    | `/api/tasks/:id`     | Update a specific task  | ✅             |
+| DELETE | `/api/tasks/:id`     | Delete a task           | ✅             |
 
 ---
 
-## 📬 Contact
+## 🧪 Testing the App
 
-Made by **Arjun** – feel free to contribute, fork, or submit PRs!
-
----
-
-Perfect! Here's an updated version of your **README** section with added support for **Weather and Movie APIs** so users know they can extend the chatbot functionality.
-
----
-
-## 🧠 Tech Stack
-
-| Layer           | Technology                                     |
-| --------------- | ---------------------------------------------- |
-| Frontend        | HTML, JavaScript                               |
-| Backend         | Django (Python)                                |
-| ML Model        | scikit-learn (e.g., Logistic Regression / SVM) |
-| NLP             | NLTK (tokenization, stemming)                  |
-| Storage         | Pickled `.pkl` files                           |
-| Extensible APIs | OpenWeatherMap, TMDB (Movie API) ✅             |
+1. Register a new user via frontend or Postman
+2. Login to get the JWT token
+3. Use the token to access `/api/tasks` routes
+4. Add, edit, or delete your tasks dynamically
 
 ---
 
-## 🔌 Optional: Add Weather & Movie APIs
+## 🔌 Optional: Add Email Notification (Nodemailer)
 
-You can enhance the chatbot by integrating third-party APIs. For example:
+You can extend the app by adding **email reminders** for pending tasks.
 
-### 🌦 Weather API (OpenWeatherMap)
+```js
+import nodemailer from "nodemailer";
 
-* **Use case**: Allow users to ask, *“What’s the weather in Delhi?”*
-* **How**:
+const sendReminder = async (email, task) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: "your_email@gmail.com", pass: "your_app_password" }
+  });
 
-  * Sign up at [https://openweathermap.org/api](https://openweathermap.org/api)
-  * Use Python's `requests` module to fetch live weather data
-  * Add an intent like `"weather"` in `intents.json`
-  * Create a response handler in `chat.py`
-
-```python
-import requests
-
-def get_weather(city="Delhi"):
-    API_KEY = "your_api_key_here"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
-    response = requests.get(url).json()
-    temp = response["main"]["temp"]
-    return f"The temperature in {city} is {temp}°C."
-```
-
----
-
-### 🎬 Movie Info API (TMDB)
-
-* **Use case**: Ask *“Tell me about the movie Inception”*
-* **How**:
-
-  * Get an API key at [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
-  * Add an `"movie_info"` intent and respond by fetching movie metadata
-
-```python
-def get_movie_info(title="Inception"):
-    API_KEY = "your_tmdb_api_key"
-    url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={title}"
-    response = requests.get(url).json()
-    if response["results"]:
-        movie = response["results"][0]
-        return f"{movie['title']} - {movie['overview']}"
-    return "Movie not found."
+  await transporter.sendMail({
+    from: "Todo App",
+    to: email,
+    subject: "Task Reminder",
+    text: `Don't forget to complete: ${task}`
+  });
+};
 ```
 
 ---
 
 ## 📈 Future Scope
 
-* Add chatbot memory using session storage
-* Deploy on cloud (Render/Heroku)
-* Use LLMs like GPT-3.5 or Rasa for better understanding
-* Integrate voice-to-text and text-to-speech
-* Enable database logging of chats
+* 📱 Responsive React frontend
+* 🕓 Task scheduling & reminders
+* ☁️ Deploy backend on Render or Railway
+* 📊 Dashboard for completed vs pending tasks
+* 💬 Notifications or email alerts
 
 ---
+
+## 📬 Contact
+
+Made by **Arjun Thakur**
+💼 Backend Developer | 🌐 MERN Stack Enthusiast
+🔗 [GitHub](https://github.com/2003Arjun)
+
+---
+
+
+
+
+
+
 
 
