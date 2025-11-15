@@ -1,23 +1,22 @@
-# Ai-ChatBot
-screenshot:
+# 🤖 AI ChatBot
+
 ![chat bot screenshot](https://github.com/user-attachments/assets/86a42a88-b4cc-4b28-8f3c-10d6abb73780)
 
+This is an **AI-powered ChatBot** that combines Google's Gemini AI with a custom neural network for intelligent conversations. It features a modern, responsive web interface with smooth animations and supports both AI responses and custom commands.
 
-# ✅ Fullstack Todo App using Node.js, Express & MySQL
-
-This is a **Fullstack Todo Application** that allows users to manage their daily tasks efficiently with features like authentication, task creation, updates, and completion tracking.  
-It is powered by a **Node.js + Express** backend, a **MySQL** database, and a clean **HTML/CSS/JS** frontend.
+Powered by **Flask**, **Google Gemini AI**, and **PyTorch** with a beautiful **HTML/CSS/JS** frontend.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 **User Authentication** (Register/Login with JWT)
-- 🧾 **Add, Edit, Delete Tasks**
-- ✅ **Mark Tasks as Completed**
-- 💾 **Persistent Database Storage (MySQL)**
-- 🌐 **RESTful API Endpoints for Task Management**
-- 💻 **Simple, Responsive Frontend UI**
+- 🤖 **Google Gemini AI Integration** (Latest Gemini 2.0 Flash)
+- 🧠 **Custom Neural Network Fallback** (PyTorch-based)
+- 💬 **Smart Command System** (!info, !commands, !wiki, !weather)
+- 🎨 **Modern Glass-morphism UI** with smooth animations
+- 📱 **Fully Responsive Design** (Mobile & Desktop)
+- ⚡ **Real-time Typing Indicators** and message bubbles
+- 🔒 **Secure API Key Management** with environment variables
 
 ---
 
@@ -26,36 +25,31 @@ It is powered by a **Node.js + Express** backend, a **MySQL** database, and a cl
 | Layer           | Technology               |
 |-----------------|--------------------------|
 | Frontend        | HTML, CSS, JavaScript     |
-| Backend         | Node.js, Express.js       |
-| Database        | MySQL                    |
-| Authentication  | JWT (JSON Web Token)      |
-| Environment     | dotenv                    |
+| Backend         | Flask (Python)           |
+| AI Engine       | Google Gemini AI         |
+| ML Framework    | PyTorch                  |
+| NLP             | NLTK                     |
+| Environment     | python-dotenv            |
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```
-
-todo-app/
-├── server/                  # Backend code (APIs)
-│   ├── routes/              # API route definitions
-│   ├── controllers/         # Business logic for routes
-│   ├── models/              # Database models (MySQL tables)
-│   ├── middleware/          # JWT auth middleware
-│   ├── config/              # DB connection setup
-│   ├── server.js            # Entry point
-│
-├── public/ or client/       # Frontend files
-│   ├── index.html           # UI for Todo app
-│   ├── style.css            # Styling
-│   └── script.js            # API integration
-│
-├── .env                     # Environment variables
-├── package.json             # Node.js dependencies
+AI-Chatbot/
+├── templates/
+│   └── index.html           # Modern UI interface
+├── app.py                   # Flask application
+├── gemini_chat.py          # Gemini AI integration
+├── chatbot.py              # Custom neural network
+├── model.py                # PyTorch model definition
+├── nltk_utils.py           # NLP utilities
+├── intents.json            # Training data
+├── data.pth                # Trained model weights
+├── .env                    # API keys (create this)
+├── requirements.txt        # Python dependencies
 └── README.md
-
-````
+```
 
 ---
 
@@ -63,122 +57,88 @@ todo-app/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/Todo-App.git
-cd Todo-App
-````
+git clone https://github.com/yourusername/Ai-ChatBot.git
+cd Ai-ChatBot/AI-Chatbot
+```
 
 ### 2. Install Dependencies
-
 ```bash
-cd server
-npm install
+pip install -r requirements.txt
 ```
 
-### 3. Configure Environment Variables
+### 3. Get Gemini API Key
+1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with Google account
+3. Click "Create API Key"
+4. Copy your API key
 
-Create a `.env` file inside the `server/` folder:
-
+### 4. Configure Environment Variables
+Create `.env` file:
 ```bash
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=todo_app
-JWT_SECRET=your_jwt_secret
+GEMINI_API_KEY=your_actual_api_key_here
 ```
 
-### 4. Setup MySQL Database
-
-Run the following SQL command to create the database:
-
-```sql
-CREATE DATABASE todo_app;
-```
-
-The application will automatically create tables when started (if configured with Sequelize/Knex) or you can define your own schema.
-
-### 5. Run the Backend Server
-
+### 5. Run the Application
 ```bash
-npm start
+python app.py
 ```
 
-Server runs at 👉 [http://localhost:5000](http://localhost:5000)
-
-### 6. Run the Frontend
-
-Open `public/index.html` in your browser or host it on a simple server.
+Server runs at 👉 [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 📡 API Endpoints
+## 🎯 How to Use
 
-| Method | Endpoint             | Description             | Auth Required |
-| ------ | -------------------- | ----------------------- | ------------- |
-| POST   | `/api/auth/register` | Register a new user     | ❌             |
-| POST   | `/api/auth/login`    | Login and get JWT token | ❌             |
-| GET    | `/api/tasks`         | Get all tasks           | ✅             |
-| POST   | `/api/tasks`         | Create a new task       | ✅             |
-| PUT    | `/api/tasks/:id`     | Update a specific task  | ✅             |
-| DELETE | `/api/tasks/:id`     | Delete a task           | ✅             |
+### **Regular Chat:**
+- Type any message for AI-powered responses via Gemini
+- Natural conversation with context understanding
 
----
-
-## 🧪 Testing the App
-
-1. Register a new user via frontend or Postman
-2. Login to get the JWT token
-3. Use the token to access `/api/tasks` routes
-4. Add, edit, or delete your tasks dynamically
+### **Special Commands:**
+| Command | Description |
+|---------|-------------|
+| `!info` | Learn about the creator |
+| `!commands` | Show all available commands |
+| `!wiki [topic]` | Get Wikipedia summary |
+| `!weather [city]` | Get weather information |
+| `!movie [title]` | Get movie information |
 
 ---
 
-## 🔌 Optional: Add Email Notification (Nodemailer)
+## 🔧 API Integration
 
-You can extend the app by adding **email reminders** for pending tasks.
-
-```js
-import nodemailer from "nodemailer";
-
-const sendReminder = async (email, task) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: "your_email@gmail.com", pass: "your_app_password" }
-  });
-
-  await transporter.sendMail({
-    from: "Todo App",
-    to: email,
-    subject: "Task Reminder",
-    text: `Don't forget to complete: ${task}`
-  });
-};
-```
+The chatbot intelligently routes messages:
+- **General messages** → Google Gemini AI
+- **Special commands** → Custom neural network
+- **Fallback** → Local model if API fails
 
 ---
 
-## 📈 Future Scope
+## 🎨 UI Features
 
-* 📱 Responsive React frontend
-* 🕓 Task scheduling & reminders
-* ☁️ Deploy backend on Render or Railway
-* 📊 Dashboard for completed vs pending tasks
-* 💬 Notifications or email alerts
+- **Glass-morphism design** with backdrop blur
+- **Smooth animations** and transitions
+- **Typing indicators** with animated dots
+- **Message bubbles** with proper alignment
+- **Responsive layout** for all devices
+- **Custom scrollbars** and hover effects
+
+---
+
+## 📈 Future Enhancements
+
+* 🎤 Voice input/output integration
+* 🌍 Multi-language support
+* 📊 Conversation analytics
+* 🔄 Context memory across sessions
+* 📱 Mobile app version
+* ☁️ Cloud deployment
 
 ---
 
 ## 📬 Contact
 
 Made by **Arjun Thakur**
-💼 Backend Developer | 🌐 MERN Stack Enthusiast
+💼 AI Developer | 🤖 Machine Learning Enthusiast
 🔗 [GitHub](https://github.com/2003Arjun)
 
 ---
-
-
-
-
-
-
-
-

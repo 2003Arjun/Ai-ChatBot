@@ -1,0 +1,126 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hey", "How are you", "Is anyone there?", "Hello", "Good day"],
+      "responses": ["Hey :-)", "Hello, thanks for visiting", "Hi there, what can I do for you?", "Hi there, how can I help?"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "items",
+      "patterns": ["Which items do you have?", "What kinds of items are there?", "What do you sell?", "What do you have?"],
+      "responses": [
+        "We sell coffee, tea, juice, milkshakes, sandwiches, burgers, pizza, and desserts.",
+        "We offer beverages and fast food items like coffee, tea, juice, burgers, and more."
+      ]
+    },
+    {
+      "tag": "coffee",
+      "patterns": ["I want coffee", "Give me coffee", "Coffee please", "Do you have coffee?"],
+      "responses": ["Great choice! We have Espresso, Cappuccino, and Latte."]
+    },
+    {
+      "tag": "tea",
+      "patterns": ["I want tea", "Give me tea", "Tea please", "Do you have tea?"],
+      "responses": ["We have Masala Chai, Green Tea, and Black Tea."]
+    },
+    {
+      "tag": "juice",
+      "patterns": ["I want juice", "Give me juice", "Juice please", "Do you have fresh juice?"],
+      "responses": ["We have fresh orange, watermelon, and mango juice."]
+    },
+    {
+      "tag": "milkshake",
+      "patterns": ["I want a milkshake", "Give me a milkshake", "Milkshake please", "Do you have milkshake?"],
+      "responses": ["Yes! We have chocolate, vanilla, and strawberry milkshakes."]
+    },
+    {
+      "tag": "sandwich",
+      "patterns": ["I want a sandwich", "Do you have sandwiches?", "Give me a sandwich"],
+      "responses": ["Yes! We have grilled cheese, club, and veggie sandwiches."]
+    },
+    {
+      "tag": "burger",
+      "patterns": ["I want a burger", "Burger please", "Do you serve burgers?"],
+      "responses": ["We serve veg and chicken burgers with fries!"]
+    },
+    {
+      "tag": "pizza",
+      "patterns": ["I want pizza", "Give me pizza", "Do you have pizza?"],
+      "responses": ["We have Margherita, Pepperoni, and Veggie pizza."]
+    },
+    {
+      "tag": "dessert",
+      "patterns": ["What desserts do you have?", "I want dessert", "Give me a sweet dish"],
+      "responses": ["We offer chocolate cake, brownies, and ice cream."]
+    },
+    {
+      "tag": "payments",
+      "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Can I pay with Paypal?", "Are you cash only?", "Do you accept cash?"],
+      "responses": ["We accept VISA, Mastercard and Paypal", "We accept most major credit cards, and Paypal"]
+    },
+    {
+      "tag": "location",
+      "patterns": ["Where are you located?", "Where is your store?", "What is your address?"],
+      "responses": ["We are located at Karnataka, India", "Our store is at Hassan District, Karnataka, India"]
+    },
+    {
+      "tag": "hours",
+      "patterns": ["What are your hours?", "When are you open?", "What time do you close?", "When do you open?"],
+      "responses": ["We are open from 8 AM to 8 PM every day", "Our hours are 8 AM to 8 PM daily"]
+    },
+    {
+      "tag": "delivery",
+      "patterns": ["How long does delivery take?", "How long does shipping take?", "When do I get my delivery?", "How fast is delivery?"],
+      "responses": ["Delivery takes 1 to 2 hours", "Shipping takes 15 to 30 mins"]
+    },
+    {
+      "tag": "order",
+      "patterns": ["I want to order", "Can I place an order?", "How do I order?", "I want to buy something"],
+      "responses": ["You can place an order by calling us at +91 1234567890 or visiting our website."]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["How can I contact you?", "What is your phone number?", "Do you have an email?"],
+      "responses": ["You can reach us at +91 1234567890 or email us at  demo@email.com"]
+    },
+    {
+      "tag": "about_project",
+      "patterns": ["Tell me about this project", "What is this chatbot about?", "Describe this project", "What can this chatbot do?", "Give me some info about this chatbot"],
+      "responses": ["This is a personal chatbot created by Arjun. It can answer questions about items, take orders, and provide information about the store. It's built using Python and machine learning techniques."]
+    },
+    {
+      "tag": "funny",
+      "patterns": ["Tell me a joke!", "Tell me something funny!", "Do you know a joke?"],
+      "responses": [
+        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college? Bison.",
+        "Why do programmers prefer dark mode? Because light attracts bugs! 😄",
+        "Why did the Python developer go broke? Because he couldn't __cash__ his checks!"
+      ]
+    },
+    {
+      "tag": "command_help",
+      "patterns": ["!command", "!commands", "help commands", "What can I type with !"],
+      "responses": [
+        "Use the command <b>!movie</b> followed by a movie title to get a movie description.<br><br>Use <b>!wiki</b> followed by a topic to get a Wikipedia summary.<br><br>Use <b>!weather</b> followed by a city name to get the weather report (only for Malaysian cities)."
+      ]
+    },
+    {
+      "tag": "info",
+      "patterns": ["!info"],
+      "responses": [
+        "Greetings! I'm a personal chatbot created by Arjun to help answer questions about him. Refer below for ideas on what you can ask me :)<br><br>1) Get to know Arjun by asking me about his background, education, work experiences, future plans, skills, hobbies, spoken languages, birthday, age.<br><br>2) If you're not interested to know more about Arjun, I was built with some additional features that you might find interesting! Type !commands for more information."
+      ]
+    }
+  ]
+}
