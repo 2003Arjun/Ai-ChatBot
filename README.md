@@ -1,7 +1,8 @@
 # 🤖 AI ChatBot
 
 
-<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/190a54c8-0d0a-4502-827f-5341c45d93f9" />
+<img width="781" height="873" alt="image" src="https://github.com/user-attachments/assets/3724be9f-8f81-4052-b0c9-1610c4e8317d" />
+
 
 
 This is an **AI-powered ChatBot** that combines Google's Gemini AI with a custom neural network for intelligent conversations. It features a modern, responsive web interface with smooth animations and supports both AI responses and custom commands.
