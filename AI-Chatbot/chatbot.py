@@ -4,6 +4,7 @@ import torch
 import wikipedia
 from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
+from weather_api import get_weather
 
 # Load intents file
 with open('intents.json', 'r') as json_data:
@@ -28,9 +29,7 @@ bot_name = "Bot"
 info_triggered = False  # This keeps state between calls
 
 
-def get_weather(city):
-    # Placeholder: Replace this with real API calls
-    return f"The weather in {city} is warm and sunny with a high of 30°C."
+
 
 
 def get_response(sentence):

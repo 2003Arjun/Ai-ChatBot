@@ -1,6 +1,7 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+import html
 
 load_dotenv()
 
@@ -15,7 +16,12 @@ class GeminiChat:
         
     def get_response(self, message):
         try:
-            response = self.model.generate_content(message)
-            return response.text
+            # Add system prompt for simpler responses
+            prompt = f"Please give a simple, clear, and brief answer. Use everyday language that's easy to understand. Keep it conversational and friendly.\n\nUser question: {message}"
+            
+            response = self.model.generate_content(prompt)
+            # Decode HTML entities for clean display
+            clean_text = html.unescape(response.text)
+            return clean_text
         except Exception as e:
-            return f"Sorry, I encountered an error: {str(e)}"
+            return "Sorry, something went wrong. Please try again."

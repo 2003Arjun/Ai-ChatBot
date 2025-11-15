@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -12,8 +13,8 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f7fa;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,18 +23,16 @@
         }
 
         .chat-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
+            background: white;
+            border: 1px solid #e1e5e9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             width: 100%;
-            max-width: 450px;
-            height: 650px;
+            max-width: 400px;
+            height: 600px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            animation: slideUp 0.6s ease-out;
         }
 
         @keyframes slideUp {
@@ -48,76 +47,36 @@
         }
 
         .chat-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #4a90e2;
             color: white;
-            padding: 20px;
+            padding: 16px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chat-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
         }
 
         .chat-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .chat-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
         }
 
         #chat-box {
             flex: 1;
-            padding: 20px;
+            padding: 16px;
             overflow-y: auto;
-            background: linear-gradient(to bottom, #f8f9ff, #ffffff);
+            background: #fafbfc;
         }
 
         #chat-box::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        #chat-box::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
+            width: 4px;
         }
 
         #chat-box::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 10px;
+            background: #ccc;
+            border-radius: 2px;
         }
 
         .message-container {
-            margin-bottom: 20px;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 12px;
         }
 
         .user-message {
@@ -131,26 +90,34 @@
         }
 
         .message-bubble {
-            max-width: 80%;
-            padding: 12px 18px;
-            border-radius: 20px;
-            font-size: 15px;
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 14px;
             line-height: 1.4;
             word-wrap: break-word;
-            position: relative;
         }
 
         .user-bubble {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #4a90e2;
             color: white;
-            border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 4px;
         }
 
         .bot-bubble {
-            background: #f0f2f5;
+            background: white;
             color: #333;
-            border-bottom-left-radius: 5px;
-            border: 1px solid #e4e6ea;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #e1e5e9;
+        }
+
+        .bot-bubble ul, .bot-bubble ol {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .bot-bubble li {
+            margin: 4px 0;
         }
 
         .typing-indicator {
@@ -189,64 +156,54 @@
         }
 
         .input-area {
-            padding: 20px;
+            padding: 16px;
             background: white;
-            border-top: 1px solid #e4e6ea;
+            border-top: 1px solid #e1e5e9;
             display: flex;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
         }
 
         #user-input {
             flex: 1;
-            padding: 12px 18px;
-            border: 2px solid #e4e6ea;
-            border-radius: 25px;
-            font-size: 16px;
+            padding: 10px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
             outline: none;
-            transition: all 0.3s ease;
-            background: #f8f9ff;
+            background: #f9f9f9;
         }
 
         #user-input:focus {
-            border-color: #667eea;
+            border-color: #4a90e2;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .send-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #4a90e2;
             border: none;
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .send-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .send-button:active {
-            transform: translateY(0);
+            background: #357abd;
         }
 
         .send-button:disabled {
-            opacity: 0.6;
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
 
         .send-icon {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
@@ -266,14 +223,13 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <div class="chat-title">🤖 AI Assistant</div>
-            <div class="chat-subtitle">Powered by Google Gemini AI</div>
+            <div class="chat-title">AI Chat</div>
         </div>
         
         <div id="chat-box">
             <div class="message-container bot-message">
                 <div class="message-bubble bot-bubble">
-                    👋 Hello! I'm your AI assistant. Type <strong>!info</strong> to learn about my creator or <strong>!commands</strong> to see what I can do!
+                    Hi! Ask me anything.
                 </div>
             </div>
         </div>
@@ -298,6 +254,30 @@
     </div>
 
     <script>
+        function hasMarkdownSyntax(text) {
+            // Check if text contains common markdown patterns
+            return /^\s*[\*\-]\s+/.test(text) || // bullet points
+                   /^\s*\d+\.\s+/.test(text) || // numbered lists
+                   /\*\*.*\*\*/.test(text) || // bold
+                   /\*.*\*/.test(text) || // italic
+                   /^#+\s/.test(text); // headers
+        }
+
+        function convertMarkdownToHtml(text) {
+            // Only convert if markdown syntax is detected
+            if (!hasMarkdownSyntax(text)) {
+                return text.replace(/\n/g, '<br>');
+            }
+            
+            // Use marked.js for proper markdown conversion
+            try {
+                return marked.parse(text);
+            } catch (e) {
+                // Fallback to simple line break conversion
+                return text.replace(/\n/g, '<br>');
+            }
+        }
+
         async function sendMessage() {
             const input = document.getElementById("user-input");
             const message = input.value.trim();
@@ -307,11 +287,13 @@
             const sendButton = document.getElementById("send-button");
             const typingIndicator = document.getElementById("typing-indicator");
 
-            // Add user message
-            const userMessageDiv = document.createElement('div');
-            userMessageDiv.className = 'message-container user-message';
-            userMessageDiv.innerHTML = `<div class="message-bubble user-bubble">${message}</div>`;
-            chatBox.appendChild(userMessageDiv);
+            // Add user message (skip if it's a command)
+            if (!message.startsWith('!')) {
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.className = 'message-container user-message';
+                userMessageDiv.innerHTML = `<div class="message-bubble user-bubble">${message}</div>`;
+                chatBox.appendChild(userMessageDiv);
+            }
 
             // Clear input and disable button
             input.value = "";
@@ -333,10 +315,11 @@
                 // Hide typing indicator
                 typingIndicator.style.display = 'none';
                 
-                // Add bot response
+                // Add bot response with markdown conversion
                 const botMessageDiv = document.createElement('div');
                 botMessageDiv.className = 'message-container bot-message';
-                botMessageDiv.innerHTML = `<div class="message-bubble bot-bubble">${data.answer.replace(/\n/g, '<br>')}</div>`;
+                const formattedAnswer = convertMarkdownToHtml(data.answer);
+                botMessageDiv.innerHTML = `<div class="message-bubble bot-bubble">${formattedAnswer}</div>`;
                 chatBox.appendChild(botMessageDiv);
                 
             } catch (error) {
